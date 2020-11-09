@@ -26,7 +26,7 @@ return [
 
     'stubs' => [
         'enabled' => false,
-        'path' => base_path() . '/vendor/savageglobalmarketing/foundation/Stubs',
+        'path' => base_path() . '/vendor/savageglobalmarketing/laravel-foundation/Stubs',
         'files' => [
             //'routes/web' => 'Routes/web.php',
             'routes/api' => 'Routes/api.php',
@@ -70,7 +70,7 @@ return [
         |
         */
 
-        'modules' => base_path('SavageGlobalMarketing'),
+        'modules' => base_path('Modules'),
         /*
         |--------------------------------------------------------------------------
         | Modules assets path
@@ -162,8 +162,8 @@ return [
     'composer' => [
         'vendor' => 'savageglobalmarketing',
         'author' => [
-            'name' => 'Marcelo Barros da Silva',
-            'email' => 'savageglobalmarketing@outlook.com',
+            'name' => 'Savage Dev Team',
+            'email' => 'support@savageglobalent.com',
         ],
     ],
     /*
