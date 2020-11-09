@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation\Contracts;
+namespace SavageGlobalMarketing\Foundation\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 

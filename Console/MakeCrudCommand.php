@@ -1,8 +1,8 @@
 <?php
 
-namespace Maxcelos\Foundation\Console;
+namespace SavageGlobalMarketing\Foundation\Console;
 
-use Maxcelos\Foundation\Fillable;
+use SavageGlobalMarketing\Foundation\Fillable;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Nwidart\Modules\Exceptions\FileAlreadyExistException;

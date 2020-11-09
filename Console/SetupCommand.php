@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation\Console;
+namespace SavageGlobalMarketing\Foundation\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -12,7 +12,7 @@ class SetupCommand extends Command
      *
      * @var string
      */
-    protected $name = 'maxcelos:setup';
+    protected $name = 'foundation:setup';
 
     /**
      * The console command description.
@@ -28,7 +28,7 @@ class SetupCommand extends Command
      */
     public function handle()
     {
-        $this->call('vendor:publish', ['--provider' => 'Maxcelos\Foundation\Providers\FoundationServiceProvider']);
+        $this->call('vendor:publish', ['--provider' => 'SavageGlobalMarketing\Foundation\Providers\FoundationServiceProvider']);
 
         $setupOptions = [];
 
@@ -74,10 +74,10 @@ class SetupCommand extends Command
         $assetsPath = "'assets' => public_path('{$options['assetsPath']}')";
         $vendor = "'vendor' => '{$options['vendor']}'";
 
-        $setup = str_replace("'namespace' => 'Maxcelos'", $setNamespace, $setup);
-        $setup = str_replace("'modules' => base_path('Maxcelos')", $path, $setup);
-        $setup = str_replace("'assets' => public_path('Maxcelos')", $assetsPath, $setup);
-        $setup = str_replace("'vendor' => 'maxcelos'", $vendor, $setup);
+        $setup = str_replace("'namespace' => 'SavageGlobalMarketing'", $setNamespace, $setup);
+        $setup = str_replace("'modules' => base_path('SavageGlobalMarketing')", $path, $setup);
+        $setup = str_replace("'assets' => public_path('SavageGlobalMarketing')", $assetsPath, $setup);
+        $setup = str_replace("'vendor' => 'savageglobalmarketing'", $vendor, $setup);
 
         file_put_contents(base_path() . '/config/modules.php', $setup);
     }

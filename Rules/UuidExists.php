@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation\Rules;
+namespace SavageGlobalMarketing\Foundation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 

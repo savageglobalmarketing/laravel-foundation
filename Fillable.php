@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation;
+namespace SavageGlobalMarketing\Foundation;
 
 class Fillable
 {

@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$;
 
-use Maxcelos\Foundation\Repositories\FoundationRepository as BaseRepository;
+use SavageGlobalMarketing\Foundation\Repositories\FoundationRepository as BaseRepository;
 use $MODULE_NAMESPACE$\Contracts\$NAME$Contract;
 use $MODULE_NAMESPACE$\Models\$NAME$;
 

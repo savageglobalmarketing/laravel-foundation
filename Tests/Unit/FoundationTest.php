@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation\Tests\Unit;
+namespace SavageGlobalMarketing\Foundation\Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;

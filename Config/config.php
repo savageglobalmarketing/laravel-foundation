@@ -42,7 +42,7 @@ return [
      | Here you must specify the UserResource class that will be used
      | to get Userstamps information.
      */
-    'user_resource_class' => Maxcelos\Auth\Transformers\UserStampsResource::class,
+    'user_resource_class' => SavageGlobalMarketing\Auth\Transformers\UserStampsResource::class,
 
     /*----------------------------------------------------------------
      | Custom error handler class
@@ -53,7 +53,7 @@ return [
      | If you by any reason needs to use a different handler or just
      | stay with the default Laravel handler, specify it here
      */
-    'error_handler' => Maxcelos\Foundation\Exceptions\Handler::class,
+    'error_handler' => SavageGlobalMarketing\Foundation\Exceptions\Handler::class,
 
     /*----------------------------------------------------------------
      | Default model fields

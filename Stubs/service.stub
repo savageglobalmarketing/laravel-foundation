@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$\$NAME$;
 
-use Maxcelos\Foundation\Services\$ACTION$Service;
+use SavageGlobalMarketing\Foundation\Services\$ACTION$Service;
 use $MODULE_NAMESPACE$\Contracts\$NAME$Contract;
 
 class $ACTION$$NAME$Service extends $ACTION$Service

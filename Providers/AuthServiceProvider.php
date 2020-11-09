@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation\Providers;
+namespace SavageGlobalMarketing\Foundation\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Symfony\Component\Finder\Finder;

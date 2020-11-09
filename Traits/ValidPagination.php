@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation\Traits;
+namespace SavageGlobalMarketing\Foundation\Traits;
 
 use Illuminate\Validation\Rule;
 

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Maxcelos\Foundation\Utils;
+namespace SavageGlobalMarketing\Foundation\Utils;
 
 
 use Dyrynda\Database\Casts\EfficientUuid;

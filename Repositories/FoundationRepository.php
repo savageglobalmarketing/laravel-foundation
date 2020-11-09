@@ -1,12 +1,12 @@
 <?php
 
-namespace Maxcelos\Foundation\Repositories;
+namespace SavageGlobalMarketing\Foundation\Repositories;
 
-use Maxcelos\Foundation\Contracts\FoundationContract;
+use SavageGlobalMarketing\Foundation\Contracts\FoundationContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Laravel\Scout\Builder as ScoutBuilder;
-use Maxcelos\Foundation\Utils\RepoUtils;
+use SavageGlobalMarketing\Foundation\Utils\RepoUtils;
 
 abstract class FoundationRepository implements FoundationContract
 {

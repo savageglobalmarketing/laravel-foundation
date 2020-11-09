@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$;
 
-use Maxcelos\Foundation\Providers\AuthServiceProvider as ServiceProvider;
+use SavageGlobalMarketing\Foundation\Providers\AuthServiceProvider as ServiceProvider;
 
 class $CLASS$ extends ServiceProvider
 {

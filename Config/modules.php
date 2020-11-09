@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'namespace' => 'Maxcelos',
+    'namespace' => 'SavageGlobalMarketing',
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
 
     'stubs' => [
         'enabled' => false,
-        'path' => base_path() . '/vendor/maxcelos/foundation/Stubs',
+        'path' => base_path() . '/vendor/savageglobalmarketing/foundation/Stubs',
         'files' => [
             //'routes/web' => 'Routes/web.php',
             'routes/api' => 'Routes/api.php',
@@ -70,7 +70,7 @@ return [
         |
         */
 
-        'modules' => base_path('Maxcelos'),
+        'modules' => base_path('SavageGlobalMarketing'),
         /*
         |--------------------------------------------------------------------------
         | Modules assets path
@@ -80,7 +80,7 @@ return [
         |
         */
 
-        'assets' => public_path('Maxcelos'),
+        'assets' => public_path('SavageGlobalMarketing'),
         /*
         |--------------------------------------------------------------------------
         | The migrations path
@@ -160,10 +160,10 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'maxcelos',
+        'vendor' => 'savageglobalmarketing',
         'author' => [
             'name' => 'Marcelo Barros da Silva',
-            'email' => 'maxcelos@outlook.com',
+            'email' => 'savageglobalmarketing@outlook.com',
         ],
     ],
     /*

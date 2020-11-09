@@ -1,16 +1,16 @@
 <?php
 
-namespace Maxcelos\Foundation\Providers;
+namespace SavageGlobalMarketing\Foundation\Providers;
 
 use Dyrynda\Database\LaravelEfficientUuidServiceProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 use Illuminate\Support\Arr;
 use Laravel\Scout\Builder as ScoutBuilder;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
-use Maxcelos\Foundation\Console\FactoryMakeCommand;
-use Maxcelos\Foundation\Console\MakeCrudCommand;
-use Maxcelos\Foundation\Console\SetupCommand;
-use Maxcelos\Foundation\Exceptions\Handler as ExceptionHandler;
+use SavageGlobalMarketing\Foundation\Console\FactoryMakeCommand;
+use SavageGlobalMarketing\Foundation\Console\MakeCrudCommand;
+use SavageGlobalMarketing\Foundation\Console\SetupCommand;
+use SavageGlobalMarketing\Foundation\Exceptions\Handler as ExceptionHandler;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
 
 class FoundationServiceProvider extends AuthServiceProvider

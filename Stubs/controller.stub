@@ -4,7 +4,7 @@ namespace $MODULE_NAMESPACE$\Http\Controllers;
 
 use $MODULE_NAMESPACE$\Services\$NAME$Service;
 use $MODULE_NAMESPACE$\Models\$NAME$;
-use Maxcelos\Foundation\Http\Controllers\FoundationController as Controller;
+use SavageGlobalMarketing\Foundation\Http\Controllers\FoundationController as Controller;
 
 class $CLASS$ extends Controller
 {

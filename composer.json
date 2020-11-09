@@ -1,10 +1,10 @@
 {
-    "name": "maxcelos/laravel-foundation",
+    "name": "savageglobalmarketing/laravel-foundation",
     "description": "",
     "authors": [
         {
             "name": "Marcelo Barros da Silva",
-            "email": "maxcelos@outlook.com"
+            "email": "savageglobalmarketing@outlook.com"
         }
     ],
     "require": {
@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Maxcelos\\Foundation\\Providers\\FoundationServiceProvider"
+                "SavageGlobalMarketing\\Foundation\\Providers\\FoundationServiceProvider"
             ],
             "aliases": {
 
@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Maxcelos\\Foundation\\": ""
+            "SavageGlobalMarketing\\Foundation\\": ""
         }
     }
 }

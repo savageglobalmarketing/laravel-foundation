@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$;
 
-use Maxcelos\Foundation\Traits\ValidPagination;
+use SavageGlobalMarketing\Foundation\Traits\ValidPagination;
 use Illuminate\Foundation\Http\FormRequest;
 
 class $NAME$Request extends FormRequest

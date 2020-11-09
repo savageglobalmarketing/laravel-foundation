@@ -2,7 +2,7 @@
 
 namespace $NAMESPACE$;
 
-use Maxcelos\Foundation\Contracts\FoundationContract as Contract;
+use SavageGlobalMarketing\Foundation\Contracts\FoundationContract as Contract;
 
 interface $NAME$Contract extends Contract
 {

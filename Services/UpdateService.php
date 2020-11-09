@@ -1,8 +1,8 @@
 <?php
 
-namespace Maxcelos\Foundation\Services;
+namespace SavageGlobalMarketing\Foundation\Services;
 
-use Maxcelos\Foundation\Contracts\FoundationContract;
+use SavageGlobalMarketing\Foundation\Contracts\FoundationContract;
 
 abstract class UpdateService
 {

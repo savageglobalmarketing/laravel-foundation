@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation\Console;
+namespace SavageGlobalMarketing\Foundation\Console;
 
 use Illuminate\Support\Str;
 use Nwidart\Modules\Commands\GeneratorCommand;

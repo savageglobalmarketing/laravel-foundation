@@ -1,13 +1,13 @@
 <?php
 
-namespace Maxcelos\Foundation\Http\Controllers;
+namespace SavageGlobalMarketing\Foundation\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Maxcelos\Foundation\Traits\FoundationProperties;
+use SavageGlobalMarketing\Foundation\Traits\FoundationProperties;
 use Nwidart\Modules\Routing\Controller;
 
 abstract class FoundationController extends Controller

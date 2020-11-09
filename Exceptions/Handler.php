@@ -1,6 +1,6 @@
 <?php
 
-namespace Maxcelos\Foundation\Exceptions;
+namespace SavageGlobalMarketing\Foundation\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;

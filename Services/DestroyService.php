@@ -1,8 +1,8 @@
 <?php
 
-namespace Maxcelos\Foundation\Services;
+namespace SavageGlobalMarketing\Foundation\Services;
 
-use Maxcelos\Foundation\Contracts\FoundationContract;
+use SavageGlobalMarketing\Foundation\Contracts\FoundationContract;
 use Illuminate\Database\Eloquent\Builder;
 
 abstract class DestroyService
