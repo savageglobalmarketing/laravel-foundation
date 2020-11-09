@@ -1,0 +1,37 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use $MODULE_NAMESPACE$\Models\$NAME$;
+use $USER_CLASS$;
+
+class $NAME$Policy
+{
+    use HandlesAuthorization;
+
+    public function index(User $user)
+    {
+        return $COMMENT_POLICY$$user->can('$SNAKE_NAME$_read');
+    }
+
+    public function create(User $user)
+    {
+        return $COMMENT_POLICY$$user->can('$SNAKE_NAME$_create');
+    }
+
+    public function view(User $user, $NAME$ $$CAMEL_NAME$)
+    {
+        return $COMMENT_POLICY$$user->can('$SNAKE_NAME$_read');
+    }
+
+    public function update(User $user, $NAME$ $$CAMEL_NAME$)
+    {
+        return $COMMENT_POLICY$$user->can('$SNAKE_NAME$_update');
+    }
+
+    public function delete(User $user, $NAME$ $$CAMEL_NAME$)
+    {
+        return $COMMENT_POLICY$$user->can('$SNAKE_NAME$_destroy');
+    }
+}

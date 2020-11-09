@@ -1,0 +1,9 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Maxcelos\Foundation\Contracts\FoundationContract as Contract;
+
+interface $NAME$Contract extends Contract
+{
+}

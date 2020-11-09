@@ -1,0 +1,15 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Maxcelos\Foundation\Repositories\FoundationRepository as BaseRepository;
+use $MODULE_NAMESPACE$\Contracts\$NAME$Contract;
+use $MODULE_NAMESPACE$\Models\$NAME$;
+
+class $NAME$Repository extends BaseRepository implements $NAME$Contract
+{
+    public function __construct($NAME$ $model)
+    {
+        parent::__construct($model);
+    }
+}

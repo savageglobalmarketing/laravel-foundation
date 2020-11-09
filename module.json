@@ -1,0 +1,13 @@
+{
+    "name": "Foundation",
+    "alias": "foundation",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Maxcelos\\Foundation\\Providers\\FoundationServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

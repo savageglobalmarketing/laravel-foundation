@@ -1,0 +1,59 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Maxcelos\Foundation\Traits\ValidPagination;
+use Illuminate\Foundation\Http\FormRequest;
+
+class $NAME$Request extends FormRequest
+{
+    use ValidPagination;
+
+    protected $internID;
+
+    protected array $fillable = $FILLABLE$;
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        $this->internID = $this->route('$CAMEL_NAME$');
+
+        $method = strtolower($this->method()) . 'Rules';
+
+        return $this->$method();
+    }
+
+    /**
+     * Get the validation rules that applies to POST request.
+     *
+     * @return array
+     */
+    private function postRules()
+    {
+        return $EMPTY_FILLABLE$;
+    }
+
+    /**
+     * Get the validation rules that applies to PUT request.
+     *
+     * @return array
+     */
+    private function putRules()
+    {
+        return $EMPTY_FILLABLE$;
+    }
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+}

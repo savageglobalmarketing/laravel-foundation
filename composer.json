@@ -1,0 +1,39 @@
+{
+    "name": "maxcelos/laravel-foundation",
+    "description": "",
+    "authors": [
+        {
+            "name": "Marcelo Barros da Silva",
+            "email": "maxcelos@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "dyrynda/laravel-efficient-uuid": "^4.2",
+        "dyrynda/laravel-model-uuid": "^6.3",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^8.12",
+        "laravel/passport": "^10.0",
+        "laravel/scout": "^8.4",
+        "laravel/ui": "^3.0",
+        "nwidart/laravel-modules": "^8.0",
+        "spatie/laravel-tags": "^3.0",
+        "teamtnt/laravel-scout-tntsearch-driver": "^11.0",
+        "wildside/userstamps": "^2.1"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Maxcelos\\Foundation\\Providers\\FoundationServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Maxcelos\\Foundation\\": ""
+        }
+    }
+}

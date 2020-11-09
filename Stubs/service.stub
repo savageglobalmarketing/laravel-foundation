@@ -1,0 +1,14 @@
+<?php
+
+namespace $NAMESPACE$\$NAME$;
+
+use Maxcelos\Foundation\Services\$ACTION$Service;
+use $MODULE_NAMESPACE$\Contracts\$NAME$Contract;
+
+class $ACTION$$NAME$Service extends $ACTION$Service
+{
+    public function __construct($NAME$Contract $repo)
+    {
+        parent::__construct($repo);
+    }
+}

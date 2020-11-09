@@ -1,0 +1,24 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Dyrynda\Database\Casts\EfficientUuid;
+use Dyrynda\Database\Support\GeneratesUuid;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
+use Wildside\Userstamps\Userstamps;
+
+class $CLASS$ extends Model
+{
+    use GeneratesUuid;
+    use SoftDeletes;
+    use Searchable;
+    use Userstamps;
+
+    protected $fillable = $FILLABLE$;
+
+    protected $casts = [
+        'uuid' => EfficientUuid::class,
+    ];
+}
