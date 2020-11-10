@@ -9,7 +9,7 @@ return [
          |----------------------------------------------------------------
          | Front end domain user for consuming app.
          */
-        'url' => env('CAJ_FRONTEND_URL', 'http://localhost:8080'),
+        'url' => env('SGM_FRONTEND_URL', 'http://localhost:8080'),
 
         /*----------------------------------------------------------------
          | App e-mail verification
@@ -18,7 +18,7 @@ return [
          |
          | This url is used e-mail verification message.
          */
-        'email_verify_url' => env('CAJ_EMAIL_VERIFY_URL', '/verify-email'),
+        'email_verify_url' => env('SGM_EMAIL_VERIFY_URL', '/verify-email'),
 
         /*----------------------------------------------------------------
          | App password reset
@@ -27,11 +27,11 @@ return [
          |
          | This is sent on password reset message.
          */
-        'reset_url' => env('CAJ_RESET_URL', '/reset'),
+        'reset_url' => env('SGM_RESET_URL', '/reset'),
     ],
 
     'api' => [
-        'prefix' => env('MAX_API_PREFIX', '')
+        'prefix' => env('SGM_API_PREFIX', '')
     ],
 
     /*----------------------------------------------------------------
@@ -71,7 +71,7 @@ return [
      | When true, policies will be created with all methods returning
      | true. Useful for testing without ACL setup.
      */
-    'bypass_policy' => true,
+    'bypass_policy' => env('SGM_FOUNDATION_BYPASS_POLICY', false),
 
     /*----------------------------------------------------------------
      | Pagination setup
