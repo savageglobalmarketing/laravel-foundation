@@ -23,16 +23,16 @@ class MakeCrudCommand extends Command
     protected $description = 'Creates a complete CRUD with Repository Pattern';
 
     private array $fileProperties = [
-        'with-model'          => ['file' => 'model', 'suffix' => 'Model'],
-        'with-migration'      => ['file' => '', 'suffix' => ''],
-        'with-request'        => ['file' => 'request', 'suffix' => 'Request'],
-        'with-interface'      => ['file' => 'contracts', 'suffix' => 'Contract'],
-        'with-repository'     => ['file' => 'repository', 'suffix' => 'Repository'],
-        'with-transformation' => ['file' => 'resource', 'suffix' => 'Resource'],
-        'with-service'        => ['file' => 'services', 'suffix' => 'Service'],
-        'with-controller'     => ['file' => 'controller', 'suffix' => 'Controller'],
-        'with-policy'         => ['file' => 'policies', 'suffix' => 'Policy'],
-        'with-factory'        => ['file' => 'factory', 'suffix' => 'Factory'],
+        'model'          => ['file' => 'model', 'suffix' => 'Model'],
+        'migration'      => ['file' => '', 'suffix' => ''],
+        'request'        => ['file' => 'request', 'suffix' => 'Request'],
+        'interface'      => ['file' => 'contracts', 'suffix' => 'Contract'],
+        'repository'     => ['file' => 'repository', 'suffix' => 'Repository'],
+        'transformation' => ['file' => 'resource', 'suffix' => 'Resource'],
+        'service'        => ['file' => 'services', 'suffix' => 'Service'],
+        'controller'     => ['file' => 'controller', 'suffix' => 'Controller'],
+        'policy'         => ['file' => 'policies', 'suffix' => 'Policy'],
+        'factory'        => ['file' => 'factory', 'suffix' => 'Factory'],
     ];
 
     private Module $module;
@@ -48,13 +48,64 @@ class MakeCrudCommand extends Command
     {
         $this->module = app('modules')->findOrFail($this->argument('module'));
 
-        $this->fillable = new Fillable($this->option('fillable') ?? '');
+        if ($this->option('fillable')) {
+            $this->fillable = new Fillable($this->option('fillable') || '');
+        } else {
+            $this->fillable = $this->getFillablesInput();
+        }
 
+        $this->runFilesCreation();
+
+        $this->addRoute();
+    }
+
+    private function getFillablesInput()
+    {
+        $this->info('Inform fillable fields for this model, or type ":q" to quit');
+
+        $fillables = [];
+
+        do {
+            $input = $this->anticipate('[type:name]: ', $this->availableTypes());
+
+            if ($input != ':q') {
+                $inputArr = explode(':', str_replace(' ', '', $input));
+
+                if (count($inputArr) == 2) {
+                    if ($inputArr[0] === 'remove') {
+                        if (isset($fillables[$inputArr[1]])) {
+                            unset($fillables[$inputArr[1]]);
+                        } elseif ($inputArr[1] === '_all') {
+                            $fillables = [];
+                        }
+                    } else {
+                        $fillables[$inputArr[1]] = $inputArr[0] ?? '';
+                    }
+                }
+
+                $this->displayFillables($fillables);
+            }
+
+        } while ($input != ':q');
+
+        $stringFillables = [];
+
+        foreach ($fillables as $name => $type) {
+            $stringFillables[] = $type . ':' . $name;
+        }
+
+        $stringFillables = implode(',', $stringFillables);
+
+        return new Fillable($stringFillables);
+    }
+
+    private function runFilesCreation()
+    {
         array_walk($this->fileProperties, function ($prop, $option) {
-            if ($this->option($option) || $this->option('full')) {
-                if ($option === 'with-migration') {
+            if (! $this->option('without-' . $option)) {
+                if ($option === 'migration') {
                     $this->handleOptionalMigrationOption();
-                } elseif ($option === 'with-service') {
+                } elseif ($option === 'service') {
                     $actions = ['query', 'create', 'get', 'update', 'destroy'];
 
                     foreach ($actions as $action) {
@@ -65,8 +116,6 @@ class MakeCrudCommand extends Command
                 }
             }
         });
-
-        $this->addRoute();
     }
 
     /**
@@ -91,16 +140,16 @@ class MakeCrudCommand extends Command
     {
         return [
             ['fillable', null, InputOption::VALUE_OPTIONAL, 'The fillable attributes of model', null],
-            ['with-model', 'm', InputOption::VALUE_NONE, 'Flag to create associated model', null],
-            ['with-migration', 'd', InputOption::VALUE_NONE, 'Flag to create associated model migrations', null],
-            ['with-request', 'e', InputOption::VALUE_NONE, 'Flag to create associated request', null],
-            ['with-interface', 'i', InputOption::VALUE_NONE, 'Flag to create associated contract', null],
-            ['with-repository', 'r', InputOption::VALUE_NONE, 'Flag to create associated repository', null],
-            ['with-transformation', 't', InputOption::VALUE_NONE, 'Flag to create associated transformation', null],
-            ['with-service', 's', InputOption::VALUE_NONE, 'Flag to create associated service', null],
-            ['with-controller', 'c', InputOption::VALUE_NONE, 'Flag to create associated controller', null],
-            ['with-policy', 'p', InputOption::VALUE_NONE, 'Flag to create associated policy', null],
-            ['with-factory', 'f', InputOption::VALUE_NONE, 'Flag to create associated factories', null],
+            ['without-model', 'm', InputOption::VALUE_NONE, 'Flag to NOT create associated model', null],
+            ['without-migration', 'd', InputOption::VALUE_NONE, 'Flag to NOT create associated model migrations', null],
+            ['without-request', 'e', InputOption::VALUE_NONE, 'Flag to NOT create associated request', null],
+            ['without-interface', 'i', InputOption::VALUE_NONE, 'Flag to NOT create associated contract', null],
+            ['without-repository', 'r', InputOption::VALUE_NONE, 'Flag to NOT create associated repository', null],
+            ['without-transformation', 't', InputOption::VALUE_NONE, 'Flag to NOT create associated transformation', null],
+            ['without-service', 's', InputOption::VALUE_NONE, 'Flag to NOT create associated service', null],
+            ['without-controller', 'c', InputOption::VALUE_NONE, 'Flag to NOT create associated controller', null],
+            ['without-policy', 'p', InputOption::VALUE_NONE, 'Flag to NOT create associated policy', null],
+            ['without-factory', 'f', InputOption::VALUE_NONE, 'Flag to NOT create associated factories', null],
             ['full', null, InputOption::VALUE_NONE, 'Flag to create all associated components (Except migration)', null],
             ['force', null, InputOption::VALUE_NONE, 'Override existing files', null],
         ];
@@ -261,5 +310,83 @@ class MakeCrudCommand extends Command
     public function getModelName()
     {
         return class_basename($this->getModelClass());
+    }
+
+    private function displayFillables($fillables)
+    {
+        $display = [];
+
+        foreach ($fillables as $name => $type) {
+            $display[] = [$type, $name];
+        }
+
+        $this->table(['Type', 'Name'], $display);
+    }
+
+    private function availableTypes()
+    {
+        return [
+            'bigIncrements',
+            'bigInteger',
+            'binary',
+            'boolean',
+            'char',
+            'dateTimeTz',
+            'dateTime',
+            'date',
+            'decimal',
+            'double',
+            'enum',
+            'float',
+            'foreignId',
+            'geometryCollection',
+            'geometry',
+            'id',
+            'increments',
+            'integer',
+            'ipAddress',
+            'json',
+            'jsonb',
+            'lineString',
+            'longText',
+            'macAddress',
+            'mediumIncrements',
+            'mediumInteger',
+            'mediumText',
+            'morphs',
+            'multiLineString',
+            'multiPoint',
+            'multiPolygon',
+            'nullableMorphs',
+            'nullableTimestamps',
+            'nullableUuidMorphs',
+            'point',
+            'polygon',
+            'rememberToken',
+            'set',
+            'smallIncrements',
+            'smallInteger',
+            'softDeletesTz',
+            'softDeletes',
+            'string',
+            'text',
+            'timeTz',
+            'time',
+            'timestampTz',
+            'timestamp',
+            'timestampsTz',
+            'timestamps',
+            'tinyIncrements',
+            'tinyInteger',
+            'unsignedBigInteger',
+            'unsignedDecimal',
+            'unsignedInteger',
+            'unsignedMediumInteger',
+            'unsignedSmallInteger',
+            'unsignedTinyInteger',
+            'uuidMorphs',
+            'uuid',
+            'year',
+        ];
     }
 }

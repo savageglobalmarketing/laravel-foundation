@@ -34,7 +34,7 @@ class SetupCommand extends Command
 
         $setupOptions['namespace'] = $this->ask('What should be the namespace for module classes?');
         $setupOptions['path'] = $this->ask('Witch path should be placed the modules source?', Str::studly($setupOptions['namespace']));
-        $setupOptions['assetsPath'] = $this->ask('Witch path should be placed the modules assets?', Str::snake($setupOptions['namespace']));
+        $setupOptions['assetsPath'] = $this->ask('Witch path should be placed the modules assets?', Str::snake($setupOptions['path']));
         $setupOptions['vendor'] = $this->ask('What should be the vendor name?', Str::lower($setupOptions['namespace']));
 
         $this->updateSetupFile($setupOptions);
