@@ -72,9 +72,9 @@ class SetupCommand extends Command
 
     private function updateSetupFile($options)
     {
-        // $file = base_path() . '/config/modules.php';
+        $file = base_path() . '/config/modules.php';
 
-        $file = base_path() . '/vendor/nwidart/laravel-modules/config/config.php';
+        // $file = base_path() . '/vendor/nwidart/laravel-modules/config/config.php';
 
         $setup = file_get_contents($file);
 
