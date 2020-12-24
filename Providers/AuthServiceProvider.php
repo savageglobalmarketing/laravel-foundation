@@ -53,8 +53,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     private function injectPolicies()
     {
-        $policiesDir = module_path($this->moduleName, 'Policies');
-        $modelsDir = module_path($this->moduleName, 'Models');
+        $policiesDir =  __DIR__ . '/../Policies';
+        $modelsDir =  __DIR__ . '/../Models';
 
         if (!is_dir($modelsDir) || !is_dir($policiesDir)) {
             return;
@@ -94,8 +94,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     private function registerRepositories()
     {
-        $contractsDir = module_path($this->moduleName, 'Contracts');
-        $repoDir = module_path($this->moduleName, 'Repositories');
+        $contractsDir =  __DIR__ . '/../Contracts';
+        $repoDir = __DIR__ . '/../Repositories';
 
         if (! file_exists($contractsDir) || ! file_exists($repoDir))
             return;

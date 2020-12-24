@@ -48,6 +48,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix(config('foundation.api.prefix'))
             ->middleware('api')
             ->namespace($this->moduleNamespace)
-            ->group(module_path('Foundation', '/Routes/api.php'));
+            ->group( __DIR__ . '/../Routes/api.php');
     }
 }
