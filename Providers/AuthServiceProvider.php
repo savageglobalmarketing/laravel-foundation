@@ -3,6 +3,7 @@
 namespace SavageGlobalMarketing\Foundation\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 use Symfony\Component\Finder\Finder;
 
 class AuthServiceProvider extends ServiceProvider
@@ -36,6 +37,10 @@ class AuthServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerRepositories();
+
+        Gate::define('viewTelescope', function ($user) {
+            return in_array($user->email, config('foundation.developers'));
+        });
     }
 
     /**

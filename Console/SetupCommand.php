@@ -101,7 +101,7 @@ class SetupCommand extends Command
         $mod = $original.','.PHP_EOL;
         $mod .= "\t\t\t".'"';
         $mod .= Str::studly($options['namespace']).'\\\": "';
-        $mod .= $options['namespace'].'/"';
+        $mod .= $options['path'].'/"';
 
         $composer = str_replace($original, $mod, $composer);
 
