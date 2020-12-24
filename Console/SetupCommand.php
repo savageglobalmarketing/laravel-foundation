@@ -39,6 +39,15 @@ class SetupCommand extends Command
 
         $this->updateSetupFile($setupOptions);
         $this->updateComposerFile($setupOptions);
+
+        $this->call('vendor:publish', [
+            '--provider' => 'SavageGlobalMarketing\Foundation\Providers\FoundationServiceProvider',
+            '--tag' => 'setup',
+            '--force' => true
+        ]);
+
+        $this->call('pest:install');
+        $this->call('telescope:install');
     }
 
     /**
@@ -63,9 +72,9 @@ class SetupCommand extends Command
 
     private function updateSetupFile($options)
     {
-        $file = base_path() . '/config/modules.php';
+        // $file = base_path() . '/config/modules.php';
 
-        //$file = base_path() . '/vendor/nwidart/laravel-modules/config/config.php';
+        $file = base_path() . '/vendor/nwidart/laravel-modules/config/config.php';
 
         $setup = file_get_contents($file);
 

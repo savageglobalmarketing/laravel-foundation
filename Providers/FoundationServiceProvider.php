@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use Laravel\Scout\Builder as ScoutBuilder;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use SavageGlobalMarketing\Foundation\Console\FactoryMakeCommand;
+use SavageGlobalMarketing\Foundation\Console\GenericInstallCommand;
 use SavageGlobalMarketing\Foundation\Console\MakeCrudCommand;
 use SavageGlobalMarketing\Foundation\Console\SetupCommand;
 use SavageGlobalMarketing\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -45,6 +46,7 @@ class FoundationServiceProvider extends AuthServiceProvider
             FactoryMakeCommand::class,
             SetupCommand::class,
             MakeCrudCommand::class,
+            GenericInstallCommand::class
         ]);
     }
 
@@ -55,6 +57,7 @@ class FoundationServiceProvider extends AuthServiceProvider
      */
     public function register()
     {
+        $this->app->register(RouteServiceProvider::class);
         $this->app->register(LaravelEfficientUuidServiceProvider::class);
         $this->app->register(TNTSearchScoutServiceProvider::class);
     }
@@ -72,6 +75,18 @@ class FoundationServiceProvider extends AuthServiceProvider
         $this->publishes([
             __DIR__ . '/../Config/scout.php' => config_path('scout.php'),
         ], 'config');
+
+        $this->publishes([
+            __DIR__ . '/../Config/app.php' => config_path('app.php'),
+        ], 'setup');
+
+        $this->publishes([
+            __DIR__ . '/../Config/auth.php' => config_path('auth.php'),
+        ], 'setup');
+
+        $this->publishes([
+            __DIR__ . '/../Config/cors.php' => config_path('cors.php'),
+        ], 'setup');
 
         $this->publishes([
             __DIR__ . '/../Config/config.php' => config_path($this->moduleNameLower . '.php'),

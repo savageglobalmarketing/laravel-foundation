@@ -2,7 +2,6 @@
 
 namespace $MODULE_NAMESPACE$\Http\Controllers;
 
-use $MODULE_NAMESPACE$\Services\$NAME$Service;
 use $MODULE_NAMESPACE$\Models\$NAME$;
 use SavageGlobalMarketing\Foundation\Http\Controllers\FoundationController as Controller;
 

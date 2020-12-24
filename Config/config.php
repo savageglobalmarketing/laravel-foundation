@@ -116,4 +116,7 @@ return [
          */
         'pagination_parameter' => 'page',
     ],
+
+
+    'upload_disk' => env('FOUNDATION_UPLOAD_DISK', 'local')
 ];

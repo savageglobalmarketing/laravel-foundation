@@ -61,7 +61,7 @@ abstract class FoundationRepository implements FoundationContract
      *
      * @return mixed
      */
-    public function getById($id): Model
+    public function getById($id)
     {
         if ($this->hasUuid($this->model)) {
             $modelFound = $this->model->whereUuid($id);

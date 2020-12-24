@@ -12,7 +12,7 @@ interface FoundationContract
 
     public function update(array $newData): self;
 
-    public function getById($id): Model;
+    public function getById($id);
 
     public function get($id, bool $withTrashed = false): self;
 

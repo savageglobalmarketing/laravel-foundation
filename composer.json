@@ -10,16 +10,22 @@
     "require": {
         "php": "^7.4",
         "dyrynda/laravel-efficient-uuid": "^4.2",
-        "dyrynda/laravel-model-uuid": "^6.3",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "dyrynda/laravel-model-uuid": "^6.4",
+        "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^8.12",
-        "laravel/passport": "^10.0",
-        "laravel/scout": "^8.4",
-        "laravel/ui": "^3.0",
-        "nwidart/laravel-modules": "^8.0",
+        "laravel/passport": "^10.1",
+        "laravel/scout": "^8.5",
+        "laravel/ui": "^3.1",
+        "nwidart/laravel-modules": "^8.2",
         "spatie/laravel-tags": "^3.0",
-        "teamtnt/laravel-scout-tntsearch-driver": "^11.0",
+        "teamtnt/laravel-scout-tntsearch-driver": "^11.1",
         "wildside/userstamps": "^2.1"
+    },
+    "require-dev": {
+        "laravel/telescope": "^4.4",
+        "pestphp/pest": "^0.3.17",
+        "pestphp/pest-plugin-laravel": "^0.3.0",
+        "phpunit/phpunit": "^9.3.10"
     },
     "extra": {
         "laravel": {

@@ -4,6 +4,7 @@ namespace $NAMESPACE$;
 
 use Dyrynda\Database\Casts\EfficientUuid;
 use Dyrynda\Database\Support\GeneratesUuid;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Scout\Searchable;
@@ -15,10 +16,16 @@ class $CLASS$ extends Model
     use SoftDeletes;
     use Searchable;
     use Userstamps;
+    use HasFactory;
 
     protected $fillable = $FILLABLE$;
 
     protected $casts = [
         'uuid' => EfficientUuid::class,
     ];
+
+    protected static function newFactory()
+    {
+        return $CLASS$Factory::new();
+    }
 }
