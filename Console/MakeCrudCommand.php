@@ -264,9 +264,6 @@ class MakeCrudCommand extends Command
      */
     private function handleOptionalMigrationOption(): void
     {
-        if (! $this->option('with-migration'))
-            return;
-
         $pieces = preg_split('/(?=[A-Z])/', $this->argument('model'), -1, PREG_SPLIT_NO_EMPTY);
 
         $last = array_pop($pieces);
