@@ -6,15 +6,11 @@ use SavageGlobalMarketing\Foundation\Providers\AuthServiceProvider as ServicePro
 
 class $CLASS$ extends ServiceProvider
 {
-    /**
-     * @var string $moduleName
-     */
-    protected $moduleName = '$MODULE$';
+    protected string $moduleName = '$MODULE$';
 
-    /**
-     * @var string $moduleNameLower
-     */
-    protected $moduleNameLower = '$LOWER_NAME$';
+    protected string $moduleNameLower = '$LOWER_NAME$';
+
+    protected string $modulePath = __DIR__ . '/../';
 
     /**
      * Boot the application events.

@@ -18,6 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [];
 
+    protected string $modulePath = __DIR__ . '/../';
+
     /**
      * Boot the application events.
      *
@@ -58,8 +60,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     private function injectPolicies()
     {
-        $policiesDir =  __DIR__ . '/../Policies';
-        $modelsDir =  __DIR__ . '/../Models';
+        $policiesDir =  $this->modulePath . '/Policies';
+        $modelsDir =  $this->modulePath . '/Models';
 
         if (!is_dir($modelsDir) || !is_dir($policiesDir)) {
             return;
@@ -99,8 +101,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     private function registerRepositories()
     {
-        $contractsDir =  __DIR__ . '/../Contracts';
-        $repoDir = __DIR__ . '/../Repositories';
+        $contractsDir =  $this->modulePath . '/Contracts';
+        $repoDir = $this->modulePath . '/Repositories';
 
         if (! file_exists($contractsDir) || ! file_exists($repoDir))
             return;
