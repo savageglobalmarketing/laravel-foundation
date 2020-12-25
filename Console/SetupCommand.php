@@ -40,6 +40,8 @@ class SetupCommand extends Command
         $this->updateSetupFile($setupOptions);
         $this->updateComposerFile($setupOptions);
 
+        exec('rm ' . base_path('database/migrations/*'));
+
         $this->call('vendor:publish', [
             '--provider' => 'SavageGlobalMarketing\Foundation\Providers\FoundationServiceProvider',
             '--tag' => 'setup',
@@ -73,8 +75,6 @@ class SetupCommand extends Command
     private function updateSetupFile($options)
     {
         $file = base_path() . '/config/modules.php';
-
-        // $file = base_path() . '/vendor/nwidart/laravel-modules/config/config.php';
 
         $setup = file_get_contents($file);
 

@@ -74,7 +74,7 @@ class FoundationServiceProvider extends AuthServiceProvider
         ], 'config');
         $this->publishes([
             __DIR__ . '/../Config/scout.php' => config_path('scout.php'),
-        ], 'config');
+        ], 'setup');
 
         $this->publishes([
             __DIR__ . '/../Config/app.php' => config_path('app.php'),
@@ -86,6 +86,10 @@ class FoundationServiceProvider extends AuthServiceProvider
 
         $this->publishes([
             __DIR__ . '/../Config/cors.php' => config_path('cors.php'),
+        ], 'setup');
+
+        $this->publishes([
+            __DIR__ . '/../Config/passport.php' => config_path('passport.php'),
         ], 'setup');
 
         $this->publishes([

@@ -82,7 +82,7 @@ abstract class FoundationRepository implements FoundationContract
      *
      * @return FoundationContract
      */
-    public function get($id, bool $withTrashed = false): FoundationContract
+    public function get($id, bool $withTrashed = false): self
     {
         $this->withTrashed = $withTrashed;
 

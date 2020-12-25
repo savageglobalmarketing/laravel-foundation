@@ -139,7 +139,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return string|null
      */
-    private function getModuleNamespace()
+    protected function getModuleNamespace()
     {
         $psr4 = $this->app['modules']->findOrFail($this->moduleName)->getComposerAttr('autoload')['psr-4'];
         return array_key_first($psr4);
