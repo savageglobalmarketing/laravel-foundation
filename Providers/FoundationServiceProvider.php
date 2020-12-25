@@ -72,6 +72,7 @@ class FoundationServiceProvider extends AuthServiceProvider
         $this->publishes([
             __DIR__ . '/../Config/modules.php' => config_path('modules.php'),
         ], 'config');
+
         $this->publishes([
             __DIR__ . '/../Config/scout.php' => config_path('scout.php'),
         ], 'setup');
@@ -95,6 +96,7 @@ class FoundationServiceProvider extends AuthServiceProvider
         $this->publishes([
             __DIR__ . '/../Config/config.php' => config_path($this->moduleNameLower . '.php'),
         ], 'config');
+
         $this->mergeConfigFrom(
             __DIR__ . '/../Config/config.php', $this->moduleNameLower
         );
