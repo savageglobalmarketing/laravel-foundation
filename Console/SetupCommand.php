@@ -4,6 +4,7 @@ namespace SavageGlobalMarketing\Foundation\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use SavageGlobalMarketing\Auth\Services\Register\RegisterService;
 
 class SetupCommand extends Command
 {
@@ -48,8 +49,18 @@ class SetupCommand extends Command
             '--force' => true
         ]);
 
-        $this->call('pest:install');
+        $this->call('pest:install', ['--quiet' => true]);
         $this->call('telescope:install');
+
+        $adminData = [
+            'name' => 'Admin',
+            'email' => 'admin@email.com',
+            'password' => 'secret',
+            'password_confirmation' => 'secret',
+            'tenant_name' => 'Admin',
+        ];
+
+        app(RegisterService::class)->run($adminData, false);
     }
 
     /**
