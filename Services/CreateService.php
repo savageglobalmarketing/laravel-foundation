@@ -27,6 +27,10 @@ abstract class CreateService
      */
     public function run(array $data): FoundationContract
     {
+        if (auth()->check() && auth()->user()->currentTenant->id) {
+            $data['tenant_id'] = auth()->user()->currentTenant->id;
+        }
+
         return $this->repo->make($data);
     }
 }

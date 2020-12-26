@@ -18,6 +18,8 @@ class $CLASS$ extends Migration
             /** @noinspection PhpUndefinedMethodInspection */
             $table->efficientUuid('uuid')->index();
 $FIELDS$
+
+            $table->foreignId('tenant_id')->nullable()->references('id')->on('auth_tenants');
             $table->timestamps();
             $table->softDeletes();
             $table->unsignedBigInteger('created_by')->nullable();
