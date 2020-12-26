@@ -4,7 +4,7 @@ namespace SavageGlobalMarketing\Foundation\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class UuidExists implements Rule
+class ExistsOnTenant implements Rule
 {
     protected $model;
 
@@ -29,11 +29,12 @@ class UuidExists implements Rule
     {
         try {
             if (auth()->check() && auth()->user()->currentTenant()->id) {
-                return $this->model::whereUuid($value)
+                return $this->model::where($attribute, $value)
                     ->where('tenant_id', auth()->user()->currentTenant()->id)
-                    ->first() ? true : false;
+                    ->count() ? true : false;
             } else {
-                return $this->model::whereUuid($value)->first() ? true : false;
+                return $this->model::where($attribute, $value)
+                    ->count() ? false : true;
             }
         } catch (\Exception $exception) {
             return false;
@@ -47,6 +48,6 @@ class UuidExists implements Rule
      */
     public function message()
     {
-        return 'Uuid does not exists.';
+        return 'The :attribute has already been taken.';
     }
 }

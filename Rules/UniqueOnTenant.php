@@ -28,10 +28,14 @@ class UniqueOnTenant implements Rule
     public function passes($attribute, $value)
     {
         try {
-            if (auth()->check() && auth()->user()->currentTennat()->id)
-            return $this->model::where($attribute, $value)
-                ->where('tenant_id', auth()->user()->currentTennat()->id)
-                    ->first() ? true : false;
+            if (auth()->check() && auth()->user()->currentTenant()->id) {
+                return $this->model::where($attribute, $value)
+                    ->where('tenant_id', auth()->user()->currentTenant()->id)
+                    ->count() ? false : true;
+            } else {
+                return $this->model::where($attribute, $value)
+                    ->count() ? false : true;
+            }
         } catch (\Exception $exception) {
             return false;
         }
