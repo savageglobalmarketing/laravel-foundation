@@ -24,7 +24,9 @@
         "laravel/telescope": "^4.4",
         "pestphp/pest": "^0.3.17",
         "pestphp/pest-plugin-laravel": "^0.3.0",
-        "phpunit/phpunit": "^9.3.10"
+        "phpunit/phpunit": "^9.3.10",
+        "savageglobalmarketing/laravel-auth": "dev-main",
+        "savageglobalmarketing/laravel-acl": "dev-main"
     },
     "extra": {
         "laravel": {
