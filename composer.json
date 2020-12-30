@@ -4,7 +4,7 @@
     "authors": [
         {
             "name": "Marcelo Barros da Silva",
-            "email": "savageglobalmarketing@outlook.com"
+            "email": "marcelo@savageglobalent.com"
         }
     ],
     "require": {
@@ -19,14 +19,13 @@
         "laravel/ui": "^3.1",
         "nwidart/laravel-modules": "^8.2",
         "spatie/laravel-tags": "^3.0",
+        "spatie/laravel-permission": "^3.18",
         "teamtnt/laravel-scout-tntsearch-driver": "^11.1",
         "wildside/userstamps": "^2.1",
         "laravel/telescope": "^4.4",
         "pestphp/pest": "^0.3.17",
         "pestphp/pest-plugin-laravel": "^0.3.0",
-        "phpunit/phpunit": "^9.3.10",
-        "savageglobalmarketing/laravel-auth": "dev-main",
-        "savageglobalmarketing/laravel-acl": "dev-main"
+        "phpunit/phpunit": "^9.3.10"
     },
     "extra": {
         "laravel": {

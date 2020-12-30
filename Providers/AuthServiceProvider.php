@@ -29,6 +29,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->injectPolicies();
         $this->registerPolicies();
+        $this->registerRepositories();
     }
 
     /**
@@ -38,8 +39,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerRepositories();
-
         Gate::define('viewTelescope', function ($user) {
             return in_array($user->email, config('foundation.developers'));
         });

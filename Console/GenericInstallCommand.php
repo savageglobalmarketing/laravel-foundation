@@ -42,7 +42,7 @@ class GenericInstallCommand extends Command
     public function handle()
     {
         $this->call('key:generate');
-        $this->call('module:migrate');
+        $this->call('migrate');
         $this->call('module:seed');
         $this->call('permission:migrate');
 

@@ -29,6 +29,15 @@ class SetupCommand extends Command
      */
     public function handle()
     {
+        exec('rm ' . base_path('database/migrations/*'));
+        exec('rm ' . base_path('tests/Pest.php'));
+        exec('rm ' . base_path('tests/Helpers.php'));
+
+        $this->updateEnv();
+
+        $this->call('config:clear');
+        $this->call('cache:clear');
+
         $this->call('vendor:publish', ['--provider' => 'SavageGlobalMarketing\Foundation\Providers\FoundationServiceProvider']);
 
         $setupOptions = [];
@@ -41,7 +50,6 @@ class SetupCommand extends Command
         $this->updateSetupFile($setupOptions);
         $this->updateComposerFile($setupOptions);
 
-        exec('rm ' . base_path('database/migrations/*'));
 
         $this->call('vendor:publish', [
             '--provider' => 'SavageGlobalMarketing\Foundation\Providers\FoundationServiceProvider',
@@ -51,16 +59,28 @@ class SetupCommand extends Command
 
         $this->call('pest:install', ['--quiet' => true]);
         $this->call('telescope:install');
+        $this->call('horizon:install');
 
-        $adminData = [
-            'name' => 'Admin',
-            'email' => 'admin@email.com',
-            'password' => 'secret',
-            'password_confirmation' => 'secret',
-            'tenant_name' => 'Admin',
-        ];
+        exec('composer require savageglobalmarketing/laravel-auth');
+        exec('composer require savageglobalmarketing/laravel-acl');
 
-        app(RegisterService::class)->run($adminData, false);
+        $this->call('foundation:install');
+    }
+
+    private function updateEnv()
+    {
+        $env = file_get_contents(base_path('.env'));
+
+        $env = str_replace('DB_HOST=127.0.0.1', 'DB_HOST=mysql', $env);
+        $env = str_replace('REDIS_HOST=127.0.0.1', 'REDIS_HOST=redis', $env);
+        $env = str_replace('CACHE_DRIVER=file', 'CACHE_DRIVER=redis', $env);
+        $env = str_replace('QUEUE_CONNECTION=file', 'CACHE_DRIVER=redis', $env);
+
+        $env .= PHP_EOL;
+        $env .= 'PASSPORT_PERSONAL_ACCESS_CLIENT_ID=' . PHP_EOL;
+        $env .= 'PASSPORT_PERSONAL_ACCESS_CLIENT_SECRET=' . PHP_EOL;
+
+        file_put_contents(base_path('.env'), $env);
     }
 
     /**
