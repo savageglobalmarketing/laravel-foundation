@@ -35,9 +35,6 @@ class SetupCommand extends Command
 
         $this->updateEnv();
 
-        $this->call('config:clear');
-        $this->call('cache:clear');
-
         $this->call('vendor:publish', ['--provider' => 'SavageGlobalMarketing\Foundation\Providers\FoundationServiceProvider']);
 
         $setupOptions = [];
@@ -64,6 +61,8 @@ class SetupCommand extends Command
         exec('composer require savageglobalmarketing/laravel-auth');
         exec('composer require savageglobalmarketing/laravel-acl');
 
+        $this->call('optimize');
+
         $this->call('foundation:install');
     }
 
@@ -75,6 +74,7 @@ class SetupCommand extends Command
         $env = str_replace('REDIS_HOST=127.0.0.1', 'REDIS_HOST=redis', $env);
         $env = str_replace('CACHE_DRIVER=file', 'CACHE_DRIVER=redis', $env);
         $env = str_replace('QUEUE_CONNECTION=file', 'CACHE_DRIVER=redis', $env);
+        $env = str_replace('MAIL_FROM_ADDRESS=null', 'MAIL_FROM_ADDRESS=support@example.com', $env);
 
         $env .= PHP_EOL;
         $env .= 'PASSPORT_PERSONAL_ACCESS_CLIENT_ID=' . PHP_EOL;
