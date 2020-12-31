@@ -62,8 +62,6 @@ class SetupCommand extends Command
         exec('composer require savageglobalmarketing/laravel-acl');
 
         $this->call('optimize');
-
-        $this->call('foundation:install');
     }
 
     private function updateEnv()
