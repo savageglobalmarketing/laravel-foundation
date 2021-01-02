@@ -5,6 +5,7 @@ namespace SavageGlobalMarketing\Foundation\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\Finder\Finder;
+use Illuminate\Support\Facades\Cache;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -59,6 +60,19 @@ class AuthServiceProvider extends ServiceProvider
      */
     private function injectPolicies()
     {
+        $modelPoliciesToBind = Cache::rememberForever($this->moduleName . '_policies_list', function () {
+            return $this->getModelPoliciesList();
+        });
+
+        foreach ($modelPoliciesToBind as $model => $policy) {
+            $this->policies[$model] = $policy;
+        }
+    }
+
+    protected function getModelPoliciesList()
+    {
+        $modelPoliciesToBind = [];
+
         $policiesDir =  $this->modulePath . '/Policies';
         $modelsDir =  $this->modulePath . '/Models';
 
@@ -90,9 +104,11 @@ class AuthServiceProvider extends ServiceProvider
             }, ARRAY_FILTER_USE_BOTH);
 
             if (count($policy)) {
-                $this->policies[$modelNamespace] = array_values($policy)[0];
+                $modelPoliciesToBind[$modelNamespace] = array_values($policy)[0];
             }
         }
+
+        return $modelPoliciesToBind;
     }
 
     /**
@@ -100,6 +116,19 @@ class AuthServiceProvider extends ServiceProvider
      */
     private function registerRepositories()
     {
+        $reposToBind = Cache::rememberForever($this->moduleName . '_repo_list', function () {
+            return $this->getRepoContractsList();
+        });
+
+        foreach ($reposToBind as $contract => $repo) {
+            $this->app->bind($contract, $repo);
+        }
+    }
+
+    protected function getRepoContractsList()
+    {
+        $reposToBind = [];
+
         $contractsDir =  $this->modulePath . '/Contracts';
         $repoDir = $this->modulePath . '/Repositories';
 
@@ -107,8 +136,8 @@ class AuthServiceProvider extends ServiceProvider
             return;
 
         $contractFiles = Finder::create()->files()->in($contractsDir)->name('*.php');
-
         $repoFiles = Finder::create()->files()->in($repoDir)->name('*.php');
+
         $repoClasses = [];
 
         foreach ($repoFiles as $repoFile) {
@@ -129,10 +158,12 @@ class AuthServiceProvider extends ServiceProvider
                 }, ARRAY_FILTER_USE_BOTH);
 
                 if (count($repo)) {
-                    $this->app->bind($contractNamespace, array_values($repo)[0]);
+                    $reposToBind[$contractNamespace] = array_values($repo)[0];
                 }
             }
         }
+
+        return $reposToBind;
     }
 
     /**
@@ -142,7 +173,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function getModuleNamespace()
     {
-        $psr4 = $this->app['modules']->findOrFail($this->moduleName)->getComposerAttr('autoload')['psr-4'];
-        return array_key_first($psr4);
+        return Cache::rememberForever($this->moduleName . '_namespace', function () {
+            $psr4 = $this->app['modules']->findOrFail($this->moduleName)->getComposerAttr('autoload')['psr-4'];
+            return array_key_first($psr4);
+        });
     }
 }

@@ -26,7 +26,7 @@ trait FoundationProperties
     {
         $cacheKey = str_replace('\\', '_', get_class($this)) . '_properties';
 
-        $cache = Cache::remember($cacheKey, now()->addYear(), function () {
+        $cache = Cache::rememberForever($cacheKey, function () {
             return [
                 'resourceDiscover' => $this->resourceDiscover(),
                 'fillableDiscover' => $this->fillableDiscover(),

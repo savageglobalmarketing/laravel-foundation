@@ -61,6 +61,10 @@ class SetupCommand extends Command
         $this->info('Installing dependencies');
         exec('composer require savageglobalmarketing/laravel-auth');
         exec('composer require savageglobalmarketing/laravel-acl');
+
+        $this->info('Setup complete! Run "foundation:install" to finish the process');
+        $this->newLine();
+        $this->warn('(If you are not using Laravel Sail, create a database and update .env file with connection details.)');
     }
 
     private function updateEnv()
