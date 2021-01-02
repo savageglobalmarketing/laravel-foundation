@@ -64,6 +64,9 @@ class AuthServiceProvider extends ServiceProvider
             return $this->getModelPoliciesList();
         });
 
+        if (! $modelPoliciesToBind)
+            return;
+
         foreach ($modelPoliciesToBind as $model => $policy) {
             $this->policies[$model] = $policy;
         }
@@ -119,6 +122,9 @@ class AuthServiceProvider extends ServiceProvider
         $reposToBind = Cache::rememberForever($this->moduleName . '_repo_list', function () {
             return $this->getRepoContractsList();
         });
+
+        if (! $reposToBind)
+            return;
 
         foreach ($reposToBind as $contract => $repo) {
             $this->app->bind($contract, $repo);
