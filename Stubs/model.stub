@@ -7,8 +7,10 @@ use Dyrynda\Database\Support\GeneratesUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use SavageGlobalMarketing\Auth\Traits\HasScope;
 use Laravel\Scout\Searchable;
 use Wildside\Userstamps\Userstamps;
+use $MODULE_NAMESPACE$\Database\Factories\$CLASS$Factory;
 
 class $CLASS$ extends Model
 {
@@ -17,6 +19,7 @@ class $CLASS$ extends Model
     use Searchable;
     use Userstamps;
     use HasFactory;
+    use HasScope;
 
     protected $fillable = $FILLABLE$;
 
