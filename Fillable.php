@@ -40,9 +40,13 @@ class Fillable
      *
      * @return string
      */
-    public function getFillablePlain(): string
+    public function getFillablePlain($withoutTenantID = true): string
     {
         $arrays = $this->getFillableArray();
+
+        if ($withoutTenantID) {
+            unset($arrays['tenant_id']);
+        }
 
         $fillable = json_encode(array_keys($arrays));
 
@@ -56,9 +60,14 @@ class Fillable
      *
      * @return string
      */
-    public function getReverseFillablePlain(): string
+    public function getReverseFillablePlain($withoutTenantID = true): string
     {
         $fillableArray = $this->getFillableArray();
+
+        if ($withoutTenantID) {
+            unset($fillableArray['tenant_id']);
+        }
+
         $fillable = array_map(function ($type, $name) {
             return $name.':'.$type;
         }, $fillableArray, array_keys($fillableArray));

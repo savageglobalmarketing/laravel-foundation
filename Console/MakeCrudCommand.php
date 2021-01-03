@@ -49,7 +49,8 @@ class MakeCrudCommand extends Command
         $this->module = app('modules')->findOrFail($this->argument('module'));
 
         if ($this->option('fillable')) {
-            $this->fillable = new Fillable($this->option('fillable') || '');
+            $fillable = $this->option('fillable') . ',foreignId:tenant_id';
+            $this->fillable = new Fillable($fillable || '');
         } else {
             $this->fillable = $this->getFillablesInput();
         }
@@ -89,6 +90,8 @@ class MakeCrudCommand extends Command
         } while ($input != ':q');
 
         $stringFillables = [];
+
+        $fillables['tenant_id'] = 'foreignId';
 
         foreach ($fillables as $name => $type) {
             $stringFillables[] = $type . ':' . $name;
@@ -172,7 +175,7 @@ class MakeCrudCommand extends Command
             'CAMEL_NAME'        => Str::camel($this->argument('model')),
             'SNAKE_NAME'        => Str::snake($this->argument('model')),
             'LOWER_NAME'        => Str::camel($this->argument('model')),
-            'FILLABLE'          => $this->fillable->getFillablePlain() ?? '',
+            'FILLABLE'          => $this->fillable->getFillablePlain(false) ?? '',
             'EMPTY_FILLABLE'    => $this->fillable->getFillableEmpty() ?? '',
             'RESOURCE_FILLABLE' => $this->fillable->getFillableForResource() ?? '',
             'RESOURCE_CLASS'    => config('foundation.user_resource_class'),
