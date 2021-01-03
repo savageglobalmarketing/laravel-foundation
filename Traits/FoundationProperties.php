@@ -96,7 +96,12 @@ trait FoundationProperties
      */
     private function fillableDiscover()
     {
-        return empty($this->fillable) ? $this->model->getFillable() : $this->fillable;
+        $fillable = empty($this->fillable) ? $this->model->getFillable() : $this->fillable;
+
+        if (! isset($fillable['tenant_id']))
+            $fillable[] = 'tenant_id';
+
+        return $fillable;
     }
 
     /**
