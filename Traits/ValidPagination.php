@@ -18,7 +18,7 @@ trait ValidPagination
             'filters.*'      => 'array',
             'sort'           => 'array',
             'sort.direction' => 'in:asc,desc',
-            'sort.by'        => Rule::in($this->fillable),
+            'sort.by'        => Rule::in($this->getFillable()),
             'search_term'    => 'string',
             'page'           => 'array',
             'page.number'    => 'numeric',
