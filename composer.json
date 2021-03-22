@@ -22,10 +22,12 @@
         "spatie/laravel-permission": "^3.18",
         "teamtnt/laravel-scout-tntsearch-driver": "^11.1",
         "wildside/userstamps": "^2.1",
-        "laravel/telescope": "^4.4",
         "pestphp/pest": "^0.3.17",
         "pestphp/pest-plugin-laravel": "^0.3.0",
         "phpunit/phpunit": "^9.3.10"
+    },
+    "require-dev": {
+        "laravel/telescope": "^4.4"
     },
     "extra": {
         "laravel": {
