@@ -55,7 +55,6 @@ class SetupCommand extends Command
         ]);
 
         $this->call('pest:install', ['--quiet' => true]);
-        $this->call('telescope:install');
         $this->call('horizon:install');
 
         $this->info('Installing dependencies');
