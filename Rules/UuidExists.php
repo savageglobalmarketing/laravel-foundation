@@ -29,9 +29,9 @@ class UuidExists implements Rule
     {
         try {
             if (auth()->check() && auth()->user()->currentTenant()->id) {
-                return $this->model::whereUuid($value)
+                return (bool)$this->model::whereUuid($value)
                     ->where('tenant_id', auth()->user()->currentTenant()->id)
-                    ->first() ? true : false;
+                    ->first();
             } else {
                 return $this->model::whereUuid($value)->first() ? true : false;
             }
