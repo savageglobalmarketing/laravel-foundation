@@ -20,9 +20,7 @@
         "spatie/laravel-tags": "^4.0",
         "spatie/laravel-permission": "^4.0",
         "teamtnt/laravel-scout-tntsearch-driver": "^11.2",
-        "wildside/userstamps": "^2.1"
-    },
-    "require-dev": {
+        "wildside/userstamps": "^2.1",
         "pestphp/pest": "^1.0",
         "pestphp/pest-plugin-laravel": "^1.0",
         "phpunit/phpunit": "^9.5"
