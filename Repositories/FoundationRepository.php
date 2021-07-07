@@ -152,6 +152,9 @@ abstract class FoundationRepository implements FoundationContract
 
             if ($this->isRelation($parms['sort']['by'])) {
                 $builder = $this->belongsToOrdering($builder, $parms['sort']['by'], $direction);
+
+                // Avoid merge fields with join
+                $builder = $builder->select($this->model->getTable() . '.*');
             } else {
                 $builder = $builder->orderBy($parms['sort']['by'], $direction);
             }
